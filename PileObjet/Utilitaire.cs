@@ -6,19 +6,24 @@ namespace Utilitaires
     {
         public static int SaisirNb()
         {
-            Type type = typeof(int); 
-            
-            Console.WriteLine("Saisisez un nombre entier :");
-            string nb = Console.ReadLine();
-            
-            if (nb.GetType().Equals(type))
-            {
-                Console.WriteLine("ok");
+            int numericValue;
+            int temp = 0;
+            bool isNumber = false;
+            while (!isNumber)
+            {               
+                Console.WriteLine("Saisisez un nombre entier :");
+                var nb = Console.ReadLine();
+                isNumber = int.TryParse(nb, out numericValue);
+                if (isNumber == true)
+                {
+                    temp = Convert.ToInt32(nb);
+                }               
             }
-            else
-            {
-                return nb; 
-            }
+            return temp;
+            
+
+            
+            
 
 
         }
