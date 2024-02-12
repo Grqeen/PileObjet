@@ -6,19 +6,21 @@ namespace Utilitaires
     {
         public static int SaisirNb()
         {
-            int numericValue;
+            
             int temp = 0;
             bool isNumber = false;
-            while (!isNumber)
+            do
             {               
                 Console.WriteLine("Saisisez un nombre entier :");
-                var nb = Console.ReadLine();
-                isNumber = int.TryParse(nb, out numericValue);
-                if (isNumber == true)
+                try
                 {
-                    temp = Convert.ToInt32(nb);
-                }               
-            }
+                    temp = Convert.ToInt32(Console.ReadLine());
+                    isNumber = true;
+                    
+                    
+                }catch(FormatException) { }
+                            
+            } while (!isNumber);
             return temp;
             
 
