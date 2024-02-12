@@ -8,17 +8,17 @@ namespace MesOutils
     /// On ajoute après le dernier élément ajouté
     /// On retire toujours le dernier élément ajouté
     /// </summary>
-     class Pile<T>
+    class Pile<T>
     {
-  
+
 
         /// <summary>
         /// Liste contenant les éléments de la pile
         /// </summary>
         private List<T> elements;
 
-        public Pile(int nbMaxElt)
-        {           
+        public Pile()
+        {
             this.elements = new List<T>();
         }
 
@@ -30,10 +30,10 @@ namespace MesOutils
 
         public void Empiler(T nb)
         {
-            
-                this.elements.Add(nb);
-            
-           
+
+            this.elements.Add(nb);
+
+
         }
 
         public T Depiler()
