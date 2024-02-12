@@ -41,7 +41,7 @@ namespace MesOutils
 
         static void TestePileVidePleine(int nbElements)
         {
-            Pile nb = new Pile(nbElements);
+            Pile<int> nb = new Pile<int>(nbElements);
 
             if (nb.PileVide())
             {
@@ -51,20 +51,20 @@ namespace MesOutils
             {
                 Console.WriteLine("La pile n'est pas vide");
             }
-            if (nb.PilePleine())
-            {
-                Console.WriteLine("La pile est pleine");
-            }
-            else
-            {
-                Console.WriteLine("La pile n'est pas pleine");
-            }
+            //if (nb.PilePleine())
+            //{
+            //    Console.WriteLine("La pile est pleine");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("La pile n'est pas pleine");
+            //}
         }
 
         static void TestEmpiler(int nbElements)
         {
 
-            Pile unePile = new Pile(nbElements);           
+            Pile<int> unePile = new Pile<int>(nbElements);           
             unePile.Empiler(2);
             unePile.Empiler(14);
             unePile.Empiler(6);
@@ -77,7 +77,7 @@ namespace MesOutils
         {
             try
             {
-                Pile unePile = new Pile(nbElements);
+                Pile<int> unePile = new Pile<int>(nbElements);
                 
                 unePile.Empiler(2);
                 unePile.Empiler(22);
@@ -101,7 +101,7 @@ namespace MesOutils
 
             int resultat = pNbAConvertir;
             int reste;
-            Pile unePile = new Pile(pNbElements);           
+            Pile<int> unePile = new Pile<int>(pNbElements);           
 
             while (resultat != 0)
             {
