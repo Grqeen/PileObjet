@@ -1,5 +1,6 @@
 ﻿using MesOutils;
 using System;
+using System.Runtime.Remoting.Messaging;
 using Utilitaires;
 
 namespace PileObjet.Tests
@@ -20,14 +21,7 @@ namespace PileObjet.Tests
             {
                 Console.WriteLine("La pile n'est pas vide");
             }
-            //if (nb.PilePleine())
-            //{
-            //    Console.WriteLine("La pile est pleine");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("La pile n'est pas pleine");
-            //}
+            
         }
 
         public static void TestEmpiler()
@@ -69,10 +63,10 @@ namespace PileObjet.Tests
         {
 
             Console.WriteLine("Saisie du nombre à convertir.");
-            int nbAConvertir = Utilitaire.SaisirNb(0);
+            int nbAConvertir = UtilitaireConsole.SaisirNb(0);
 
             Console.WriteLine("Saisie de la nouvelle base. : ");
-            int newBase = Utilitaire.SaisirNb(2, 16);
+            int newBase = UtilitaireConsole.SaisirNb(2, 16);
 
 
             //Appel de la méthode surchargé TesteConversion pour effectuer la conversion
@@ -85,7 +79,7 @@ namespace PileObjet.Tests
         {
             try
             {
-                String valeurConvertie = Utilitaire.Convertir(nbAConvertir, newBase);
+                String valeurConvertie = UtilitaireConsole.Convertir(nbAConvertir, newBase);
                 Console.WriteLine("valeurConvertie convertie : " + valeurConvertie);
             }
             catch (Exception ex)
@@ -95,5 +89,77 @@ namespace PileObjet.Tests
 
         }
 
+        //internal static void TestInversePhrase()
+        //{
+        //    try
+        //    {
+        //        String phrase = UtilitairesAPI.RecupereLoremIpsum(3);
+        //        Console.WriteLine("\n\n phrase: ");
+        //        Console.WriteLine(phrase);
+        //        String phraseInversee = UtilitaireConsole.InversePhrase(phrase);
+        //        Console.WriteLine("\nphraseInversee : ");
+        //        Console.WriteLine(phraseInversee);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
+
+        //static void TesteSplit()
+        //{
+        //    String phrase = "Il fait toujours beau à Toulon";
+        //    var tab = phrase.Split(' ');
+
+        //    String valeurs = "rue;avenue;boulevard;place";
+        //    tab = phrase.Split(';');
+        //}
+
+        static string InversePhrase(String phrase)
+        {
+
+            Pile<string> mapile = new Pile<string>();           
+            var tab = phrase.Split(' ');
+            foreach (string mot in tab)
+            {
+                mapile.Empiler(mot);
+            }
+            String message = "";
+            while (!mapile.PileVide())
+            {
+                message += " " + mapile.Depiler();
+            }
+            return message;
+        }
+
+        public static void TesteInversePhrase()
+        {
+            try
+            {
+                String phrase = UtilitairesAPI.RecupereLoremIpsum(3);                
+                Console.WriteLine(phrase);
+                String phraseInversee = InversePhrase(phrase);
+                Console.WriteLine("\n Version Pile");
+                Console.WriteLine(phraseInversee);
+                phraseInversee = InversePhraseMieux(phrase);
+                Console.WriteLine("\n Version Améliorée");
+                Console.WriteLine(phraseInversee);
+
+              
+            }catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static string InversePhraseMieux(string phrase)
+        {
+            String message = "";
+            var tab = phrase.Split(' ');
+            foreach (string mot in tab) {             
+                message = " " + mot + message ;
+            }         
+            return message;
+        }
     }
 }

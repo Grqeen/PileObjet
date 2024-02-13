@@ -47,7 +47,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\TestPile.cs" />
-    <Compile Include="Utilitaires\Utilitaire.cs" />
+    <Compile Include="Utilitaires\UtilitaireConsole.cs" />
+    <Compile Include="Utilitaires\Utilitaires.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
