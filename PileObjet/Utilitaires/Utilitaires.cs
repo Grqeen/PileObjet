@@ -31,6 +31,23 @@ namespace Utilitaires
             }
         }
 
-        
+        internal static string InversePhrase(String phrase)
+        {
+
+            Pile<string> mapile = new Pile<string>();
+            var tab = phrase.Split(' ');
+            foreach (string mot in tab)
+            {
+                mapile.Empiler(mot);
+            }
+            String message = "";
+            while (!mapile.PileVide())
+            {
+                message += " " + mapile.Depiler();
+            }
+            return message;
+        }
+
+
     }
 }

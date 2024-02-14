@@ -89,48 +89,17 @@ namespace PileObjet.Tests
 
         }
 
-        //internal static void TestInversePhrase()
-        //{
-        //    try
-        //    {
-        //        String phrase = UtilitairesAPI.RecupereLoremIpsum(3);
-        //        Console.WriteLine("\n\n phrase: ");
-        //        Console.WriteLine(phrase);
-        //        String phraseInversee = UtilitaireConsole.InversePhrase(phrase);
-        //        Console.WriteLine("\nphraseInversee : ");
-        //        Console.WriteLine(phraseInversee);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
 
-        //static void TesteSplit()
-        //{
-        //    String phrase = "Il fait toujours beau à Toulon";
-        //    var tab = phrase.Split(' ');
-
-        //    String valeurs = "rue;avenue;boulevard;place";
-        //    tab = phrase.Split(';');
-        //}
-
-        static string InversePhrase(String phrase)
+        static void TesteSplit()
         {
-
-            Pile<string> mapile = new Pile<string>();           
+            String phrase = "Il fait toujours beau à Toulon";
             var tab = phrase.Split(' ');
-            foreach (string mot in tab)
-            {
-                mapile.Empiler(mot);
-            }
-            String message = "";
-            while (!mapile.PileVide())
-            {
-                message += " " + mapile.Depiler();
-            }
-            return message;
+
+            String valeurs = "rue;avenue;boulevard;place";
+            tab = phrase.Split(';');
         }
+
+        
 
         public static void TesteInversePhrase()
         {
@@ -138,10 +107,10 @@ namespace PileObjet.Tests
             {
                 String phrase = UtilitairesAPI.RecupereLoremIpsum(3);                
                 Console.WriteLine(phrase);
-                String phraseInversee = InversePhrase(phrase);
+                String phraseInversee = UtilitairesAPI.InversePhrase(phrase);
                 Console.WriteLine("\n Version Pile");
                 Console.WriteLine(phraseInversee);
-                phraseInversee = InversePhraseMieux(phrase);
+                phraseInversee = UtilitaireConsole.InversePhraseMieux(phrase);
                 Console.WriteLine("\n Version Améliorée");
                 Console.WriteLine(phraseInversee);
 
@@ -152,14 +121,6 @@ namespace PileObjet.Tests
             }
         }
 
-        static string InversePhraseMieux(string phrase)
-        {
-            String message = "";
-            var tab = phrase.Split(' ');
-            foreach (string mot in tab) {             
-                message = " " + mot + message ;
-            }         
-            return message;
-        }
+       
     }
 }

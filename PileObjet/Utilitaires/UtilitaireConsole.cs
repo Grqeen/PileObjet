@@ -112,9 +112,15 @@ namespace Utilitaires
             return message;
         }
 
-        public static string InversePhrase(String phrase)
+        public static string InversePhraseMieux(string phrase)
         {
-            return "";
+            String message = "";
+            var tab = phrase.Split(' ');
+            foreach (string mot in tab)
+            {
+                message = " " + mot + message;
+            }
+            return message;
         }
     }
 }
